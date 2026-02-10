@@ -256,6 +256,49 @@ body{
     </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+   
+    window.playMusic = function () {
+        const audio = document.getElementById("music");
+
+        if (!audio) {
+            console.error("No se encontró el audio");
+            return;
+        }
+
+        audio.volume = 0.8;
+
+        audio.play().then(() => {
+            console.log("Música reproduciéndose");
+        }).catch(err => {
+            console.warn("El navegador bloqueó el audio:", err);
+        });
+    };
+     const target = new Date("2026-02-28T18:00:00").getTime();
+
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = target - now;
+
+        if (diff <= 0) return;
+
+        document.getElementById("d").textContent =
+            Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        document.getElementById("h").textContent =
+            Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+        document.getElementById("m").textContent =
+            Math.floor((diff / (1000 * 60)) % 60);
+
+        document.getElementById("s").textContent =
+            Math.floor((diff / 1000) % 60);
+
+    }, 1000);
+
+});
+</script>
 </body>
 </html>
