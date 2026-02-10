@@ -140,15 +140,37 @@ body{
 }
 
 /* WHATSAPP */
-.whatsapp button{
-    background:#25D366;
-    border:none;
-    padding:12px 30px;
-    font-size:16px;
-    border-radius:30px;
-    cursor:pointer;
-    font-family:'Cinzel', serif;
+.section.whatsapp {
+    margin: 80px 0;
+    padding: 0 16px;
 }
+
+.whatsapp-btn-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-whatsapp {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    padding: 18px 0;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #d4af37, #b8962e);
+    color: #111;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.45);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.04);
+    box-shadow: 0 14px 32px rgba(212, 175, 55, 0.7);
+}
+
 </style>
 </head>
 
@@ -219,36 +241,21 @@ body{
 </div>
 
 <!-- 6️⃣ WHATSAPP -->
+<!-- SECCIÓN CONFIRMACIÓN WHATSAPP -->
 <div class="section whatsapp">
     <h2 class="gold">Confirma tu asistencia</h2>
-    <button onclick="confirmar()">WhatsApp</button>
+
+    <div class="whatsapp-btn-wrapper">
+        <a 
+            href="https://wa.me/5214424251499?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Roy%20%F0%9F%8E%89"
+            class="btn-whatsapp"
+            target="_blank"
+            rel="noopener noreferrer">
+            Confirmar por WhatsApp
+        </a>
+    </div>
 </div>
 
-<script>
-function playMusic(){
-    document.getElementById("music").play();
-}
-
-const target = new Date("2026-02-28T18:00:00").getTime();
-setInterval(()=>{
-    const now = new Date().getTime();
-    const diff = target - now;
-
-    document.getElementById("d").innerText = Math.floor(diff / 86400000);
-    document.getElementById("h").innerText = Math.floor((diff % 86400000) / 3600000);
-    document.getElementById("m").innerText = Math.floor((diff % 3600000) / 60000);
-    document.getElementById("s").innerText = Math.floor((diff % 60000) / 1000);
-},1000);
-
-function confirmar(){
-    const numero = "5214424251499"; // México + WhatsApp (SIN espacios)
-    const mensaje = "Hola, confirmo mi asistencia a los XV de Roy 🎉";
-    const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
-
-   
-    window.location.href = url;
-}
-</script>
 
 </body>
 </html>
