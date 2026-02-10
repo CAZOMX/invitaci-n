@@ -241,9 +241,12 @@ setInterval(()=>{
 },1000);
 
 function confirmar(){
-    const numero = " 442 425 1499";
+    const numero = "5214424251499"; // México + WhatsApp (SIN espacios)
     const mensaje = "Hola, confirmo mi asistencia a los XV de Roy 🎉";
-    window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(mensaje));
+    const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+
+    // más confiable en producción que window.open
+    window.location.href = url;
 }
 </script>
 
