@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XV Roy</title>
+
+<!-- FUENTES FORMALES -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:'Playfair Display', serif;
+}
+body{
+    margin:0;
+    background:#000;
+    color:#fff;
+    text-align:center;
+}
+
+/* SECCIONES */
+.section{
+    padding:30px 20px;
+    max-width:420px;
+    margin:auto;
+}
+.gold{
+    color:#b89b4c;
+    font-family:'Cinzel', serif;
+}
+
+/* PORTADA */
+.portada{
+    position:relative;
+    max-width:420px;
+    margin:auto;
+}
+.portada img{
+    width:100%;
+    display:block;
+}
+.play{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:rgba(184,155,76,.9);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+.play::before{
+    content:"▶";
+    color:#000;
+    font-size:30px;
+    margin-left:5px;
+}
+
+/* CONTADOR */
+.countdown{
+    display:flex;
+    gap:10px;
+    justify-content:space-between;
+    border:2px solid #b89b4c;
+    border-radius:18px;
+    padding:15px;
+}
+.time{
+    flex:1;
+    background:#111;
+    border-radius:12px;
+    padding:10px 5px;
+}
+.time span{
+    display:block;
+    font-size:22px;
+    font-weight:600;
+    font-family:'Cinzel', serif;
+}
+.time small{
+    font-size:11px;
+    color:#b89b4c;
+    letter-spacing:1px;
+}
+
+/* TIMELINE */
+.timeline{
+    position:relative;
+    padding-left:30px;
+}
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:13px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:#b89b4c;
+}
+.event{
+    position:relative;
+    margin-bottom:30px;
+    text-align:left;
+}
+.dot{
+    position:absolute;
+    left:5px;
+    top:8px;
+    width:16px;
+    height:16px;
+    background:#b89b4c;
+    border-radius:50%;
+}
+.card{
+    margin-left:30px;
+    background:#111;
+    border-radius:14px;
+    padding:15px;
+}
+.card h3{
+    margin:0 0 6px;
+    font-family:'Cinzel', serif;
+}
+.map-btn{
+    display:inline-block;
+    margin-top:8px;
+    background:#b89b4c;
+    color:#000;
+    padding:6px 16px;
+    border-radius:20px;
+    text-decoration:none;
+    font-size:13px;
+    font-family:'Cinzel', serif;
+}
+
+/* WHATSAPP */
+.whatsapp button{
+    background:#25D366;
+    border:none;
+    padding:12px 30px;
+    font-size:16px;
+    border-radius:30px;
+    cursor:pointer;
+    font-family:'Cinzel', serif;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 1️⃣ BIRTHDAY PARTY -->
+<div class="section">
+    <h2 class="gold" style="font-size:36px;">
+        Birthday Party
+    </h2>
+</div>
+
+<!-- 2️⃣ SMOKING + PLAY -->
+<div class="portada">
+    <img src="portada.jpg" alt="XV Roy">
+    <div class="play" onclick="playMusic()"></div>
+</div>
+
+<audio id="music" src="her-eyes.mp3"></audio>
+
+<!-- 3️⃣ FECHA -->
+<div class="section">
+    <p style="font-size:20px;letter-spacing:1px;">
+        <strong>Sábado</strong><br>
+        28 Febrero 2026
+    </p>
+</div>
+
+<!-- 4️⃣ CONTADOR -->
+<div class="section">
+    <div class="countdown">
+        <div class="time"><span id="d">0</span><small>DÍAS</small></div>
+        <div class="time"><span id="h">0</span><small>HORAS</small></div>
+        <div class="time"><span id="m">0</span><small>MIN</small></div>
+        <div class="time"><span id="s">0</span><small>SEG</small></div>
+    </div>
+</div>
+
+<!-- 5️⃣ LÍNEA DEL TIEMPO -->
+<div class="section">
+    <div class="timeline">
+
+        <div class="event">
+            <div class="dot"></div>
+            <div class="card">
+                <h3>⛪ Misa · 6:00 PM</h3>
+                <p>Templo La Purísima<br>Centro, Ocotlán, Jal.</p>
+                <a class="map-btn" target="_blank"
+                   href="https://maps.google.com/?q=Templo+La+Purísima+Ocotlán+Jalisco">
+                   Ver mapa
+                </a>
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="dot"></div>
+            <div class="card">
+                <h3>🥂 Fiesta · 8:00 PM</h3>
+                <p>Cerezo 216<br>La Primavera<br>Ocotlán, Jal.</p>
+                <a class="map-btn" target="_blank"
+                   href="https://maps.google.com/?q=Cerezo+216+La+Primavera+Ocotlán+Jalisco">
+                   Ver mapa
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 6️⃣ WHATSAPP -->
+<div class="section whatsapp">
+    <h2 class="gold">Confirma tu asistencia</h2>
+    <button onclick="confirmar()">WhatsApp</button>
+</div>
+
+<script>
+function playMusic(){
+    document.getElementById("music").play();
+}
+
+const target = new Date("2026-02-28T18:00:00").getTime();
+setInterval(()=>{
+    const now = new Date().getTime();
+    const diff = target - now;
+
+    document.getElementById("d").innerText = Math.floor(diff / 86400000);
+    document.getElementById("h").innerText = Math.floor((diff % 86400000) / 3600000);
+    document.getElementById("m").innerText = Math.floor((diff % 3600000) / 60000);
+    document.getElementById("s").innerText = Math.floor((diff % 60000) / 1000);
+},1000);
+
+function confirmar(){
+    const numero = " 442 425 1499";
+    const mensaje = "Hola, confirmo mi asistencia a los XV de Roy 🎉";
+    window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(mensaje));
+}
+</script>
+
+</body>
+</html>
