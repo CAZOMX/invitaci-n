@@ -259,46 +259,51 @@ body{
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-   
+    /* ========= 🎵 AUDIO ========= */
+    const audio = document.getElementById("music");
+
     window.playMusic = function () {
-        const audio = document.getElementById("music");
+        if (!audio) return;
 
-        if (!audio) {
-            console.error("No se encontró el audio");
-            return;
-        }
-
+        audio.setAttribute("playsinline", "");
+        audio.setAttribute("webkit-playsinline", "");
+        audio.preload = "auto";
         audio.volume = 0.8;
 
-        audio.play().then(() => {
-            console.log("Música reproduciéndose");
-        }).catch(err => {
-            console.warn("El navegador bloqueó el audio:", err);
+        audio.play().catch(err => {
+            console.log("Audio bloqueado por el navegador móvil", err);
         });
     };
-     const target = new Date("2026-02-28T18:00:00").getTime();
 
-    setInterval(() => {
-        const now = new Date().getTime();
+    /* ========= ⏳ CONTADOR ========= */
+    const d = document.getElementById("d");
+    const h = document.getElementById("h");
+    const m = document.getElementById("m");
+    const s = document.getElementById("s");
+
+    if (!d || !h || !m || !s) {
+        console.warn("Elementos del contador no encontrados");
+        return;
+    }
+
+    const target = new Date("2026-02-28T18:00:00").getTime();
+
+    function updateCountdown() {
+        const now = Date.now();
         const diff = target - now;
 
         if (diff <= 0) return;
 
-        document.getElementById("d").textContent =
-            Math.floor(diff / (1000 * 60 * 60 * 24));
+        d.textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
+        h.textContent = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        m.textContent = Math.floor((diff / (1000 * 60)) % 60);
+        s.textContent = Math.floor((diff / 1000) % 60);
+    }
 
-        document.getElementById("h").textContent =
-            Math.floor((diff / (1000 * 60 * 60)) % 24);
-
-        document.getElementById("m").textContent =
-            Math.floor((diff / (1000 * 60)) % 60);
-
-        document.getElementById("s").textContent =
-            Math.floor((diff / 1000) % 60);
-
-    }, 1000);
-
+    updateCountdown(); // primera ejecución inmediata
+    setInterval(updateCountdown, 1000);
 });
 </script>
+
 </body>
 </html>
